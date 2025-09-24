@@ -1,12 +1,12 @@
 <template>
-  <div class="focus-container">
+  <div class="focus-container page-container">
     <SidebarNav />
-    <div class="main-content">
-      <div class="content-header">
-        <h1>专注模式</h1>
-        <el-button @click="showHistory = !showHistory">
+    <div class="main-content page-content">
+      <div class="content-header rainbow-header">
+        <h1 class="rainbow-text glow-text">🎯 专注模式</h1>
+        <el-button @click="showHistory = !showHistory" class="rainbow-button glow-border">
           <el-icon><Clock /></el-icon>
-          {{ showHistory ? '隐藏历史' : '查看历史' }}
+          {{ showHistory ? '📊 隐藏历史' : '📈 查看历史' }}
         </el-button>
       </div>
       
@@ -16,65 +16,67 @@
         </div>
         
         <div v-if="showHistory" class="focus-history">
-          <el-card>
-            <template #header>
-              <h3>专注历史</h3>
-            </template>
+          <div class="rainbow-card floating">
+            <div class="card-header">
+              <h3 class="rainbow-text">📊 专注历史</h3>
+            </div>
             
             <div class="history-filters">
               <el-date-picker
                 v-model="selectedDate"
                 type="date"
-                placeholder="选择日期"
+                placeholder="📅 选择日期"
                 @change="loadHistory"
+                class="rainbow-input"
               />
-              <el-select v-model="historyFilter" @change="loadHistory">
-                <el-option label="全部" value="all" />
-                <el-option label="已完成" value="completed" />
-                <el-option label="未完成" value="incomplete" />
+              <el-select v-model="historyFilter" @change="loadHistory" class="rainbow-select">
+                <el-option label="📋 全部" value="all" />
+                <el-option label="✅ 已完成" value="completed" />
+                <el-option label="⏳ 未完成" value="incomplete" />
               </el-select>
             </div>
             
-            <div class="history-stats">
-              <div class="stat-card">
-                <div class="stat-number">{{ historyStats.totalSessions }}</div>
-                <div class="stat-label">总会话</div>
+            <div class="history-stats rainbow-grid">
+              <div class="stat-card rainbow-card floating">
+                <div class="stat-number rainbow-text">{{ historyStats.totalSessions }}</div>
+                <div class="stat-label">📊 总会话</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">{{ historyStats.completedSessions }}</div>
-                <div class="stat-label">已完成</div>
+              <div class="stat-card rainbow-card floating">
+                <div class="stat-number rainbow-text">{{ historyStats.completedSessions }}</div>
+                <div class="stat-label">✅ 已完成</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">{{ formatDuration(historyStats.totalTime) }}</div>
-                <div class="stat-label">总时长</div>
+              <div class="stat-card rainbow-card floating">
+                <div class="stat-number rainbow-text">{{ formatDuration(historyStats.totalTime) }}</div>
+                <div class="stat-label">⏱️ 总时长</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">{{ historyStats.completionRate }}%</div>
-                <div class="stat-label">完成率</div>
+              <div class="stat-card rainbow-card floating">
+                <div class="stat-number rainbow-text">{{ historyStats.completionRate }}%</div>
+                <div class="stat-label">📈 完成率</div>
               </div>
             </div>
             
             <div class="history-list">
-              <div v-if="focusHistory.length === 0" class="empty-state">
-                <el-empty description="暂无专注记录" />
+              <div v-if="focusHistory.length === 0" class="empty-state rainbow-card">
+                <div class="empty-icon rainbow-icon">🎯</div>
+                <p class="rainbow-text">暂无专注记录，开始你的第一次专注吧！</p>
               </div>
               <div v-else>
                 <div
                   v-for="session in focusHistory"
                   :key="session.id"
-                  class="history-item"
+                  class="history-item rainbow-card floating ripple-container"
                 >
                   <div class="session-info">
-                    <div class="session-time">
-                      {{ formatTime(session.created_at) }}
+                    <div class="session-time rainbow-icon">
+                      🕐 {{ formatTime(session.created_at) }}
                     </div>
-                    <div class="session-duration">
-                      {{ session.duration }}分钟
+                    <div class="session-duration rainbow-text">
+                      ⏱️ {{ session.duration }}分钟
                     </div>
                   </div>
                   <div class="session-status">
-                    <el-tag :type="session.completed ? 'success' : 'warning'">
-                      {{ session.completed ? '已完成' : '未完成' }}
+                    <el-tag :type="session.completed ? 'success' : 'warning'" class="rainbow-tag">
+                      {{ session.completed ? '✅ 已完成' : '⏳ 未完成' }}
                     </el-tag>
                   </div>
                   <div class="session-actions">
@@ -82,14 +84,16 @@
                       type="text"
                       size="small"
                       @click="deleteSession(session)"
+                      class="rainbow-button"
                     >
-                      删除
+                      🗑️ 删除
                     </el-button>
                   </div>
+                  <div class="ripple-effect"></div>
                 </div>
               </div>
             </div>
-          </el-card>
+          </div>
         </div>
       </div>
     </div>

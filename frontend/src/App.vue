@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="page-container">
     <!-- 护眼背景组件 -->
     <EyeCareBackground />
-    <router-view />
+    <div class="page-content">
+      <router-view />
+    </div>
   </div>
 </template>
 

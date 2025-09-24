@@ -1,17 +1,17 @@
 <template>
-  <div class="tasks-container">
+  <div class="tasks-container page-container">
     <SidebarNav />
-    <div class="main-content">
-      <div class="content-header">
-        <h1>任务管理</h1>
+    <div class="main-content page-content">
+      <div class="content-header rainbow-header">
+        <h1 class="rainbow-text glow-text">📋 任务管理</h1>
         <div class="header-actions">
-          <el-button @click="showProjectDialog = true">
+          <el-button @click="showProjectDialog = true" class="rainbow-button glow-border">
             <el-icon><FolderAdd /></el-icon>
-            新建项目
+            📁 新建项目
           </el-button>
-          <el-button type="primary" @click="showTaskDialog = true">
+          <el-button type="primary" @click="showTaskDialog = true" class="rainbow-button glow-border">
             <el-icon><Plus /></el-icon>
-            新建任务
+            ✅ 新建任务
           </el-button>
         </div>
       </div>
@@ -19,61 +19,67 @@
       <div class="tasks-content">
         <!-- 项目列表 -->
         <div class="projects-section">
-          <h2>项目</h2>
-          <div class="projects-grid">
-            <el-card
+          <h2 class="rainbow-text">📁 项目</h2>
+          <div class="projects-grid rainbow-grid">
+            <div
               v-for="project in projects"
               :key="project.id"
-              class="project-card"
+              class="project-card rainbow-card floating ripple-container"
               @click="selectProject(project)"
             >
               <div class="project-header">
-                <h3>{{ project.name }}</h3>
+                <h3 class="rainbow-text">{{ project.name }}</h3>
                 <el-dropdown @command="handleProjectAction">
-                  <el-button type="text" size="small">
+                  <el-button type="text" size="small" class="rainbow-button">
                     <el-icon><MoreFilled /></el-icon>
                   </el-button>
                   <template #dropdown>
                     <el-dropdown-menu>
-                      <el-dropdown-item :command="{action: 'edit', project}">编辑</el-dropdown-item>
-                      <el-dropdown-item :command="{action: 'delete', project}">删除</el-dropdown-item>
+                      <el-dropdown-item :command="{action: 'edit', project}">✏️ 编辑</el-dropdown-item>
+                      <el-dropdown-item :command="{action: 'delete', project}">🗑️ 删除</el-dropdown-item>
                     </el-dropdown-menu>
                   </template>
                 </el-dropdown>
               </div>
               <p class="project-description">{{ project.description || '暂无描述' }}</p>
               <div class="project-stats">
-                <span>任务: {{ getProjectTaskCount(project.id) }}</span>
-                <span>完成: {{ getProjectCompletedCount(project.id) }}</span>
+                <span class="rainbow-icon">📋 任务: {{ getProjectTaskCount(project.id) }}</span>
+                <span class="rainbow-icon">✅ 完成: {{ getProjectCompletedCount(project.id) }}</span>
               </div>
-            </el-card>
+              <div class="ripple-effect"></div>
+            </div>
           </div>
         </div>
         
         <!-- 任务列表 -->
         <div class="tasks-section">
           <div class="tasks-header">
-            <h2>任务</h2>
-            <el-select v-model="selectedProjectId" placeholder="筛选项目" clearable>
-              <el-option label="全部项目" value="" />
+            <h2 class="rainbow-text">✅ 任务</h2>
+            <el-select v-model="selectedProjectId" placeholder="🔍 筛选项目" clearable class="rainbow-select">
+              <el-option label="📋 全部项目" value="" />
               <el-option
                 v-for="project in projects"
                 :key="project.id"
-                :label="project.name"
+                :label="`📁 ${project.name}`"
                 :value="project.id"
               />
             </el-select>
           </div>
           
-          <div v-if="filteredTasks.length === 0" class="empty-state">
-            <el-empty description="暂无任务，点击新建任务开始管理" />
+          <div v-if="filteredTasks.length === 0" class="empty-state rainbow-card">
+            <div class="empty-icon rainbow-icon">📋</div>
+            <p class="rainbow-text">暂无任务，点击新建任务开始管理</p>
+            <el-button type="primary" class="rainbow-button" @click="showTaskDialog = true">
+              <el-icon><Plus /></el-icon>
+              创建第一个任务
+            </el-button>
           </div>
           
-          <div v-else class="tasks-list">
-            <el-card
+          <div v-else class="tasks-list rainbow-grid">
+            <div
               v-for="task in filteredTasks"
               :key="task.id"
-              class="task-card"
+              class="task-card rainbow-card floating ripple-container"
               :class="{ completed: task.status === 'completed' }"
             >
               <div class="task-content">
@@ -81,9 +87,10 @@
                   <el-checkbox
                     :model-value="task.status === 'completed'"
                     @change="toggleTaskStatus(task)"
+                    class="rainbow-checkbox"
                   />
                   <div class="task-info">
-                    <h3 :class="{ 'task-completed': task.status === 'completed' }">
+                    <h3 :class="{ 'task-completed': task.status === 'completed', 'rainbow-text': task.status !== 'completed' }">
                       {{ task.title }}
                     </h3>
                     <p class="task-description">{{ task.description || '暂无描述' }}</p>
@@ -91,28 +98,30 @@
                       <el-tag
                         :type="getPriorityType(task.priority)"
                         size="small"
+                        class="rainbow-tag"
                       >
-                        {{ getPriorityText(task.priority) }}
+                        {{ getPriorityIcon(task.priority) }} {{ getPriorityText(task.priority) }}
                       </el-tag>
-                      <span v-if="task.due_date" class="due-date">
-                        截止: {{ formatDate(task.due_date) }}
+                      <span v-if="task.due_date" class="due-date rainbow-icon">
+                        📅 截止: {{ formatDate(task.due_date) }}
                       </span>
-                      <span v-if="task.project_name" class="project-name">
-                        项目: {{ task.project_name }}
+                      <span v-if="task.project_name" class="project-name rainbow-icon">
+                        📁 项目: {{ task.project_name }}
                       </span>
                     </div>
                   </div>
                 </div>
                 <div class="task-actions">
-                  <el-button type="text" size="small" @click="editTask(task)">
-                    编辑
+                  <el-button type="text" size="small" @click="editTask(task)" class="rainbow-button">
+                    ✏️ 编辑
                   </el-button>
-                  <el-button type="text" size="small" @click="deleteTask(task)">
-                    删除
+                  <el-button type="text" size="small" @click="deleteTask(task)" class="rainbow-button">
+                    🗑️ 删除
                   </el-button>
                 </div>
               </div>
-            </el-card>
+              <div class="ripple-effect"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -121,22 +130,23 @@
     <!-- 新建/编辑项目对话框 -->
     <el-dialog
       v-model="showProjectDialog"
-      :title="editingProject ? '编辑项目' : '新建项目'"
+      :title="editingProject ? '✏️ 编辑项目' : '📁 新建项目'"
       width="480px"
       :close-on-click-modal="false"
-      class="project-dialog"
+      class="rainbow-dialog"
     >
-      <div class="dialog-content">
+      <div class="dialog-content rainbow-card">
         <el-form :model="projectForm" label-width="90px" class="dialog-form">
-          <el-form-item label="项目名称" required>
+          <el-form-item label="📝 项目名称" required>
             <el-input 
               v-model="projectForm.name" 
               placeholder="请输入项目名称"
               size="large"
               clearable
+              class="rainbow-input"
             />
           </el-form-item>
-          <el-form-item label="项目描述">
+          <el-form-item label="📄 项目描述">
             <el-input
               v-model="projectForm.description"
               type="textarea"
@@ -145,6 +155,7 @@
               resize="none"
               maxlength="200"
               show-word-limit
+              class="rainbow-input"
             />
           </el-form-item>
         </el-form>
@@ -152,10 +163,12 @@
       
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="showProjectDialog = false" size="large">取消</el-button>
-          <el-button type="primary" @click="saveProject" :loading="saving" size="large">
+          <el-button @click="showProjectDialog = false" size="large" class="rainbow-button">
+            ❌ 取消
+          </el-button>
+          <el-button type="primary" @click="saveProject" :loading="saving" size="large" class="rainbow-button glow-border">
             <el-icon v-if="!saving"><Check /></el-icon>
-            保存
+            💾 保存
           </el-button>
         </div>
       </template>
@@ -164,22 +177,23 @@
     <!-- 新建/编辑任务对话框 -->
     <el-dialog
       v-model="showTaskDialog"
-      :title="editingTask ? '编辑任务' : '新建任务'"
+      :title="editingTask ? '✏️ 编辑任务' : '✅ 新建任务'"
       width="520px"
       :close-on-click-modal="false"
-      class="task-dialog"
+      class="rainbow-dialog"
     >
-      <div class="dialog-content">
+      <div class="dialog-content rainbow-card">
         <el-form :model="taskForm" label-width="90px" class="dialog-form">
-          <el-form-item label="任务标题" required>
+          <el-form-item label="📝 任务标题" required>
             <el-input 
               v-model="taskForm.title" 
               placeholder="请输入任务标题"
               size="large"
               clearable
+              class="rainbow-input"
             />
           </el-form-item>
-          <el-form-item label="任务描述">
+          <el-form-item label="📄 任务描述">
             <el-input
               v-model="taskForm.description"
               type="textarea"
@@ -188,22 +202,23 @@
               resize="none"
               maxlength="300"
               show-word-limit
+              class="rainbow-input"
             />
           </el-form-item>
           <div class="form-row">
-            <el-form-item label="所属项目" class="form-item-half">
-              <el-select v-model="taskForm.project_id" placeholder="选择项目" clearable size="large">
-                <el-option label="无项目" :value="null" />
+            <el-form-item label="📁 所属项目" class="form-item-half">
+              <el-select v-model="taskForm.project_id" placeholder="选择项目" clearable size="large" class="rainbow-select">
+                <el-option label="📋 无项目" :value="null" />
                 <el-option
                   v-for="project in projects"
                   :key="project.id"
-                  :label="project.name"
+                  :label="`📁 ${project.name}`"
                   :value="project.id"
                 />
               </el-select>
             </el-form-item>
-            <el-form-item label="优先级" class="form-item-half">
-              <el-select v-model="taskForm.priority" placeholder="选择优先级" size="large">
+            <el-form-item label="⚡ 优先级" class="form-item-half">
+              <el-select v-model="taskForm.priority" placeholder="选择优先级" size="large" class="rainbow-select">
                 <el-option label="低" value="low">
                   <span style="color: #67c23a;">🟢 低</span>
                 </el-option>
@@ -216,7 +231,7 @@
               </el-select>
             </el-form-item>
           </div>
-          <el-form-item label="截止日期">
+          <el-form-item label="📅 截止日期">
             <el-date-picker
               v-model="taskForm.due_date"
               type="date"
@@ -225,6 +240,7 @@
               value-format="YYYY-MM-DD"
               size="large"
               style="width: 100%;"
+              class="rainbow-input"
             />
           </el-form-item>
         </el-form>
@@ -232,10 +248,12 @@
       
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="showTaskDialog = false" size="large">取消</el-button>
-          <el-button type="primary" @click="saveTask" :loading="saving" size="large">
+          <el-button @click="showTaskDialog = false" size="large" class="rainbow-button">
+            ❌ 取消
+          </el-button>
+          <el-button type="primary" @click="saveTask" :loading="saving" size="large" class="rainbow-button glow-border">
             <el-icon v-if="!saving"><Check /></el-icon>
-            保存
+            💾 保存
           </el-button>
         </div>
       </template>
@@ -475,6 +493,15 @@ export default {
       return texts[priority] || priority
     }
     
+    const getPriorityIcon = (priority) => {
+      const icons = {
+        low: '🟢',
+        medium: '🟡',
+        high: '🔴'
+      }
+      return icons[priority] || '⚪'
+    }
+    
     const formatDate = (dateStr) => {
       if (!dateStr) return ''
       const date = new Date(dateStr)
@@ -511,6 +538,7 @@ export default {
       getProjectCompletedCount,
       getPriorityType,
       getPriorityText,
+      getPriorityIcon,
       formatDate
     }
   }

@@ -1,3 +1,6 @@
+/* 导入彩虹美化主题 */
+@import './rainbow-theme.css';
+
 /* 全局CSS变量 - Mindtrip风格 */
 :root {
   /* 主渐变色调 */

@@ -1,54 +1,62 @@
 <template>
-  <div class="notes-container">
+  <div class="notes-container page-container">
     <SidebarNav />
-    <div class="main-content">
-      <div class="content-header">
-        <h1>笔记管理</h1>
-        <el-button type="primary" @click="showCreateDialog = true">
+    <div class="main-content page-content">
+      <div class="content-header rainbow-header">
+        <h1 class="rainbow-text glow-text">📝 笔记管理</h1>
+        <el-button type="primary" class="rainbow-button glow-border" @click="showCreateDialog = true">
           <el-icon><Plus /></el-icon>
           新建笔记
         </el-button>
       </div>
       
       <div class="notes-content">
-        <div class="notes-list">
-          <div v-if="notes.length === 0" class="empty-state">
-            <el-empty description="暂无笔记，点击新建笔记开始记录" />
+        <div class="notes-list rainbow-grid">
+          <div v-if="notes.length === 0" class="empty-state rainbow-card">
+            <div class="empty-icon rainbow-icon">📄</div>
+            <p class="rainbow-text">暂无笔记，点击新建笔记开始记录</p>
+            <el-button type="primary" class="rainbow-button" @click="showCreateDialog = true">
+              <el-icon><Plus /></el-icon>
+              创建第一篇笔记
+            </el-button>
           </div>
-          <div v-else>
-            <el-card
+          <div v-else class="notes-grid">
+            <div
               v-for="note in notes"
               :key="note.id"
-              class="note-card"
+              class="note-card rainbow-card floating ripple-container"
               @click="selectNote(note)"
             >
               <div class="note-header">
-                <h3>{{ note.title }}</h3>
+                <h3 class="rainbow-text">{{ note.title }}</h3>
                 <div class="note-actions">
                   <el-button
                     type="text"
                     size="small"
+                    class="rainbow-button"
                     @click.stop="editNote(note)"
                   >
-                    编辑
+                    ✏️ 编辑
                   </el-button>
                   <el-button
                     type="text"
                     size="small"
+                    class="rainbow-button"
                     @click.stop="deleteNote(note)"
                   >
-                    删除
+                    🗑️ 删除
                   </el-button>
                 </div>
               </div>
               <div class="note-meta">
-                <span class="note-folder">{{ note.folder }}</span>
-                <span class="note-time">{{ formatTime(note.updated_at) }}</span>
+                <span class="note-folder rainbow-icon">📁 {{ note.folder }}</span>
+                <span class="note-time">🕒 {{ formatTime(note.updated_at) }}</span>
               </div>
               <div class="note-preview">
                 {{ getPreview(note.content) }}
               </div>
-            </el-card>
+              <div class="ripple-effect"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -57,33 +65,35 @@
     <!-- 新建/编辑笔记对话框 -->
     <el-dialog
       v-model="showCreateDialog"
-      :title="editingNote ? '编辑笔记' : '新建笔记'"
+      :title="editingNote ? '✏️ 编辑笔记' : '📝 新建笔记'"
       width="680px"
       :close-on-click-modal="false"
-      class="note-dialog"
+      class="note-dialog rainbow-dialog"
     >
-      <div class="dialog-content">
+      <div class="dialog-content rainbow-card">
         <el-form :model="noteForm" label-width="90px" class="dialog-form">
           <div class="form-row">
-            <el-form-item label="标题" required class="form-item-title">
+            <el-form-item label="📝 标题" required class="form-item-title">
               <el-input 
                 v-model="noteForm.title" 
                 placeholder="请输入笔记标题"
                 size="large"
                 clearable
+                class="rainbow-input"
               />
             </el-form-item>
-            <el-form-item label="文件夹" class="form-item-folder">
+            <el-form-item label="📁 文件夹" class="form-item-folder">
               <el-input 
                 v-model="noteForm.folder" 
                 placeholder="默认文件夹"
                 size="large"
                 clearable
+                class="rainbow-input"
               />
             </el-form-item>
           </div>
-          <el-form-item label="内容" class="content-item">
-            <div class="editor-wrapper">
+          <el-form-item label="📄 内容" class="content-item">
+            <div class="editor-wrapper rainbow-card">
               <MarkdownEditor v-model="noteForm.content" />
             </div>
           </el-form-item>
@@ -92,10 +102,12 @@
       
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="showCreateDialog = false" size="large">取消</el-button>
-          <el-button type="primary" @click="saveNote" :loading="saving" size="large">
+          <el-button @click="showCreateDialog = false" size="large" class="rainbow-button">
+            ❌ 取消
+          </el-button>
+          <el-button type="primary" @click="saveNote" :loading="saving" size="large" class="rainbow-button glow-border">
             <el-icon v-if="!saving"><DocumentAdd /></el-icon>
-            保存
+            💾 保存
           </el-button>
         </div>
       </template>

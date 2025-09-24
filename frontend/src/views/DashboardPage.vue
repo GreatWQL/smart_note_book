@@ -215,14 +215,14 @@
 
       <!-- 统计卡片区域 -->
       <div class="stats-section">
-        <div class="stats-grid">
-          <div class="stat-card gradient-card-1 fade-in" style="animation-delay: 0.1s">
+        <div class="stats-grid rainbow-grid">
+          <div class="stat-card rainbow-card gradient-card-1 fade-in floating ripple-container" style="animation-delay: 0.1s" @click="handleCardClick">
             <div class="stat-content">
-              <div class="stat-icon">
+              <div class="stat-icon rainbow-icon">
                 <i class="icon-large">📚</i>
               </div>
               <div class="stat-info">
-                <div class="stat-number">{{ stats.notesCount }}</div>
+                <div class="stat-number rainbow-text">{{ stats.notesCount }}</div>
                 <div class="stat-label">笔记总数</div>
                 <div class="stat-trend">+{{ Math.floor(Math.random() * 5) + 1 }} 本周</div>
               </div>
@@ -231,15 +231,16 @@
               <div class="decoration-circle"></div>
               <div class="decoration-dots"></div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
 
-          <div class="stat-card gradient-card-2 fade-in" style="animation-delay: 0.2s">
+          <div class="stat-card rainbow-card gradient-card-2 fade-in floating ripple-container" style="animation-delay: 0.2s" @click="handleCardClick">
             <div class="stat-content">
-              <div class="stat-icon">
+              <div class="stat-icon rainbow-icon">
                 <i class="icon-large">📋</i>
               </div>
               <div class="stat-info">
-                <div class="stat-number">{{ stats.tasksCount }}</div>
+                <div class="stat-number rainbow-text">{{ stats.tasksCount }}</div>
                 <div class="stat-label">待办任务</div>
                 <div class="stat-trend">{{ completedToday }} 今日完成</div>
               </div>
@@ -248,15 +249,16 @@
               <div class="decoration-circle"></div>
               <div class="decoration-dots"></div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
 
-          <div class="stat-card gradient-card-3 fade-in" style="animation-delay: 0.3s">
+          <div class="stat-card rainbow-card gradient-card-3 fade-in floating ripple-container" style="animation-delay: 0.3s" @click="handleCardClick">
             <div class="stat-content">
-              <div class="stat-icon">
+              <div class="stat-icon rainbow-icon">
                 <i class="icon-large">🎯</i>
               </div>
               <div class="stat-info">
-                <div class="stat-number">{{ Math.floor(stats.focusTime / 60) }}</div>
+                <div class="stat-number rainbow-text">{{ Math.floor(stats.focusTime / 60) }}</div>
                 <div class="stat-label">专注小时</div>
                 <div class="stat-trend">{{ stats.focusTime % 60 }}分钟 今日</div>
               </div>
@@ -265,15 +267,16 @@
               <div class="decoration-circle"></div>
               <div class="decoration-dots"></div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
 
-          <div class="stat-card gradient-card-4 fade-in" style="animation-delay: 0.4s">
+          <div class="stat-card rainbow-card gradient-card-4 fade-in floating ripple-container" style="animation-delay: 0.4s" @click="handleCardClick">
             <div class="stat-content">
-              <div class="stat-icon">
+              <div class="stat-icon rainbow-icon">
                 <i class="icon-large">🔥</i>
               </div>
               <div class="stat-info">
-                <div class="stat-number">{{ streakDays }}</div>
+                <div class="stat-number rainbow-text">{{ streakDays }}</div>
                 <div class="stat-label">连续天数</div>
                 <div class="stat-trend">保持专注</div>
               </div>
@@ -282,6 +285,7 @@
               <div class="decoration-circle"></div>
               <div class="decoration-dots"></div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
         </div>
       </div>
@@ -290,57 +294,59 @@
 
       <!-- 最近活动区域 - 移动到上方 -->
       <div class="activity-section">
-        <div class="activity-grid">
+        <div class="activity-grid rainbow-grid">
           <!-- 最近笔记 -->
-          <div class="activity-card card slide-up" style="animation-delay: 0.8s">
+          <div class="activity-card rainbow-card card slide-up ripple-container" style="animation-delay: 0.8s" @click="handleCardClick">
             <div class="card-header">
-              <h3>📝 最近笔记</h3>
-              <router-link to="/notes" class="view-all-link">查看全部</router-link>
+              <h3 class="rainbow-text">📝 最近笔记</h3>
+              <router-link to="/notes" class="view-all-link rainbow-button">查看全部</router-link>
             </div>
             <div class="activity-content">
               <div v-if="recentNotes.length === 0" class="empty-state">
                 <div class="empty-icon">📄</div>
                 <p>还没有笔记，开始记录你的想法吧！</p>
-                <button class="create-btn" @click="$router.push('/notes')">创建第一篇笔记</button>
+                <button class="create-btn rainbow-button" @click="$router.push('/notes')">创建第一篇笔记</button>
               </div>
               <div v-else class="activity-list">
                 <div
                   v-for="note in recentNotes.slice(0, 4)"
                   :key="note.id"
-                  class="activity-item"
-                  @click="$router.push(`/notes/${note.id}`)"
+                  class="activity-item ripple-container"
+                  @click="handleItemClick($event, `/notes/${note.id}`)"
                 >
-                  <div class="item-icon">📝</div>
+                  <div class="item-icon rainbow-icon">📝</div>
                   <div class="item-content">
                     <div class="item-title">{{ note.title }}</div>
                     <div class="item-meta">{{ formatTime(note.updated_at) }}</div>
                   </div>
                   <div class="item-arrow">→</div>
+                  <div class="ripple-effect"></div>
                 </div>
               </div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
 
           <!-- 待办任务 -->
-          <div class="activity-card card slide-up" style="animation-delay: 0.9s">
+          <div class="activity-card rainbow-card card slide-up ripple-container" style="animation-delay: 0.9s" @click="handleCardClick">
             <div class="card-header">
-              <h3>✅ 待办任务</h3>
-              <router-link to="/tasks" class="view-all-link">查看全部</router-link>
+              <h3 class="rainbow-text">✅ 待办任务</h3>
+              <router-link to="/tasks" class="view-all-link rainbow-button">查看全部</router-link>
             </div>
             <div class="activity-content">
               <div v-if="pendingTasks.length === 0" class="empty-state">
                 <div class="empty-icon">✨</div>
                 <p>太棒了！没有待办任务</p>
-                <button class="create-btn" @click="$router.push('/tasks')">添加新任务</button>
+                <button class="create-btn rainbow-button" @click="$router.push('/tasks')">添加新任务</button>
               </div>
               <div v-else class="activity-list">
                 <div
                   v-for="task in pendingTasks.slice(0, 4)"
                   :key="task.id"
-                  class="activity-item"
-                  @click="$router.push('/tasks')"
+                  class="activity-item ripple-container"
+                  @click="handleItemClick($event, '/tasks')"
                 >
-                  <div class="item-icon" :class="`priority-${task.priority}`">
+                  <div class="item-icon rainbow-icon" :class="`priority-${task.priority}`">
                     {{ getPriorityIcon(task.priority) }}
                   </div>
                   <div class="item-content">
@@ -348,19 +354,22 @@
                     <div class="item-meta">{{ getPriorityText(task.priority) }}优先级</div>
                   </div>
                   <div class="item-arrow">→</div>
+                  <div class="ripple-effect"></div>
                 </div>
               </div>
             </div>
+            <div class="ripple-effect"></div>
           </div>
 
           <!-- 提醒管理 -->
-          <div class="activity-card card slide-up" style="animation-delay: 1.0s">
+          <div class="activity-card rainbow-card card slide-up ripple-container" style="animation-delay: 1.0s" @click="handleCardClick">
             <div class="card-header">
-              <h3>🔔 提醒中心</h3>
+              <h3 class="rainbow-text">🔔 提醒中心</h3>
             </div>
             <div class="activity-content">
               <ReminderManager />
             </div>
+            <div class="ripple-effect"></div>
           </div>
         </div>
       </div>
@@ -510,6 +519,36 @@ export default {
       }
     }
     
+    // 处理卡片点击事件
+    const handleCardClick = (event) => {
+      // 创建涟漪效果
+      const card = event.currentTarget
+      const ripple = card.querySelector('.ripple-effect')
+      
+      if (ripple) {
+        const rect = card.getBoundingClientRect()
+        const size = Math.max(rect.width, rect.height)
+        const x = event.clientX - rect.left - size / 2
+        const y = event.clientY - rect.top - size / 2
+        
+        ripple.style.width = ripple.style.height = size + 'px'
+        ripple.style.left = x + 'px'
+        ripple.style.top = y + 'px'
+        ripple.classList.add('ripple-animation')
+        
+        setTimeout(() => {
+          ripple.classList.remove('ripple-animation')
+        }, 600)
+      }
+    }
+    
+    // 处理项目点击事件
+    const handleItemClick = (event, path) => {
+      handleCardClick(event)
+      setTimeout(() => {
+        router.push(path)
+      }, 200)
+    }
 
     
     return {
@@ -527,7 +566,9 @@ export default {
       toggleAccountMenu,
       switchAccount,
       accountSettings,
-      getParticleStyle
+      getParticleStyle,
+      handleCardClick,
+      handleItemClick
     }
   }
 }

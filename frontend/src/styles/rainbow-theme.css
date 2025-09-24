@@ -1,0 +1,360 @@
+/* 彩虹美化主题 - 统一的视觉效果 */
+
+/* 彩虹渐变色彩系统 */
+:root {
+  /* 主要彩虹渐变 */
+  --rainbow-gradient-primary: linear-gradient(135deg, 
+    #667eea 0%, 
+    #764ba2 25%,
+    #f093fb 50%,
+    #43e97b 75%,
+    #4facfe 100%);
+  
+  --rainbow-gradient-secondary: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.8) 0%, 
+    rgba(240, 147, 251, 0.8) 50%,
+    rgba(67, 231, 122, 0.8) 100%);
+  
+  --rainbow-gradient-subtle: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.12) 0%, 
+    rgba(240, 147, 251, 0.08) 50%,
+    rgba(67, 233, 123, 0.12) 100%);
+  
+  /* 背景渐变 */
+  --rainbow-bg-gradient: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.95) 0%, 
+    rgba(118, 75, 162, 0.95) 25%,
+    rgba(240, 147, 251, 0.95) 50%,
+    rgba(67, 233, 123, 0.95) 75%,
+    rgba(79, 172, 254, 0.95) 100%);
+  
+  /* 毛玻璃效果 */
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  
+  /* 动画时长 */
+  --animation-fast: 0.15s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.5s;
+  
+  /* 缓动函数 */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 全局动画关键帧 */
+@keyframes rainbowGlow {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1) saturate(1);
+  }
+  25% {
+    filter: hue-rotate(90deg) brightness(1.1) saturate(1.2);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1.2) saturate(1.4);
+  }
+  75% {
+    filter: hue-rotate(270deg) brightness(1.1) saturate(1.2);
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes floatingAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 通用美化类 */
+.rainbow-container {
+  position: relative;
+  background: var(--rainbow-bg-gradient);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-2xl);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+.rainbow-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--rainbow-gradient-subtle);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.rainbow-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--glass-shadow);
+  transition: all var(--animation-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.rainbow-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform var(--animation-slow) var(--ease-smooth);
+}
+
+.rainbow-card:hover::before {
+  transform: translateX(100%);
+}
+
+.rainbow-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+.rainbow-button {
+  background: var(--rainbow-gradient-primary);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  color: white;
+  font-weight: 600;
+  padding: var(--spacing-3) var(--spacing-6);
+  cursor: pointer;
+  transition: all var(--animation-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.rainbow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform var(--animation-normal) var(--ease-smooth);
+}
+
+.rainbow-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  animation: pulseGlow 2s infinite;
+}
+
+.rainbow-button:hover::before {
+  transform: translateX(100%);
+}
+
+.rainbow-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.rainbow-text {
+  background: var(--rainbow-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  animation: rainbowGlow 4s ease-in-out infinite;
+}
+
+.rainbow-icon {
+  background: var(--rainbow-gradient-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: all var(--animation-normal) var(--ease-smooth);
+}
+
+.rainbow-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* 波纹效果 */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(102, 126, 234, 0.6) 0%, 
+    rgba(240, 147, 251, 0.4) 50%,
+    transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.ripple-effect.active {
+  animation: rippleWave 0.6s var(--ease-smooth);
+}
+
+/* 浮动动画 */
+.floating {
+  animation: floatingAnimation 3s ease-in-out infinite;
+}
+
+/* 发光边框 */
+.glow-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              var(--rainbow-gradient-primary) border-box;
+  border-radius: var(--border-radius-lg);
+}
+
+/* 渐变背景动画 */
+.animated-bg {
+  background: var(--rainbow-gradient-primary);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 页面容器美化 */
+.page-container {
+  min-height: 100vh;
+  background: var(--rainbow-bg-gradient);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(240, 147, 251, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(67, 233, 123, 0.2) 0%, transparent 50%);
+  animation: floatingAnimation 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* 卡片网格布局 */
+.rainbow-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.rainbow-grid .rainbow-card:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.rainbow-grid .rainbow-card:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .rainbow-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+  
+  .rainbow-card {
+    margin: 0 var(--spacing-2);
+  }
+}
+
+/* 滚动条美化 */
+.rainbow-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rainbow-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-full);
+}
+
+.rainbow-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--rainbow-gradient-primary);
+  border-radius: var(--border-radius-full);
+  transition: all var(--animation-normal) var(--ease-smooth);
+}
+
+.rainbow-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--rainbow-gradient-secondary);
+}
