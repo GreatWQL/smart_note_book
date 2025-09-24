@@ -1,0 +1,83 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "add": "追加",
+    "confirm": "確認",
+    "close": "閉じる",
+    "search": "検索",
+    "loading": "読み込み中...",
+    "success": "成功",
+    "error": "エラー",
+    "warning": "警告",
+    "info": "情報"
+  },
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "notes": "ノート",
+    "tasks": "タスク",
+    "focus": "集中",
+    "calendar": "カレンダー",
+    "chat": "AI チャット",
+    "settings": "設定"
+  },
+  "settings": {
+    "title": "設定",
+    "profile": "プロフィール",
+    "theme": "テーマ",
+    "language": "言語",
+    "api": "API 設定",
+    "data": "データ管理",
+    "about": "について",
+    "username": "ユーザー名",
+    "email": "メール",
+    "registerTime": "登録時間",
+    "lightTheme": "ライトテーマ",
+    "darkTheme": "ダークテーマ",
+    "languageSwitch": "言語切り替え",
+    "languageSwitchDesc": "言語設定を変更すると、インターフェースが即座に選択した言語に切り替わります。一部のコンテンツは、ページを更新しないと完全に反映されない場合があります。",
+    "themeChanged": "{theme}テーマに切り替えました",
+    "languageChanged": "言語を{language}に切り替えました"
+  },
+  "notes": {
+    "title": "ノート管理",
+    "newNote": "新しいノート",
+    "noteTitle": "タイトル",
+    "noteFile": "ファイル名",
+    "noteContent": "内容",
+    "enterTitle": "ノートのタイトルを入力してください",
+    "enterFileName": "デフォルトファイル名",
+    "enterContent": "Markdownコンテンツを入力してください..."
+  },
+  "tasks": {
+    "title": "タスク管理",
+    "newTask": "新しいタスク",
+    "newProject": "新しいプロジェクト",
+    "taskTitle": "タスクタイトル",
+    "taskDesc": "タスクの説明",
+    "project": "プロジェクト",
+    "priority": "優先度",
+    "dueDate": "期限",
+    "selectProject": "プロジェクトを選択",
+    "selectPriority": "優先度を選択",
+    "selectDate": "期限を選択",
+    "enterTaskTitle": "タスクタイトルを入力してください",
+    "enterTaskDesc": "タスクの説明を入力してください",
+    "projectName": "プロジェクト名",
+    "projectDesc": "プロジェクトの説明",
+    "enterProjectName": "プロジェクト名を入力してください",
+    "enterProjectDesc": "プロジェクトの説明を入力してください",
+    "high": "高",
+    "medium": "中",
+    "low": "低"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ja-JP": "日本語",
+    "fr-FR": "Français"
+  }
+}

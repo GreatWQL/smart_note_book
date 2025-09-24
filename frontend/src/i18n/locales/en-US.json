@@ -1,0 +1,83 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "confirm": "Confirm",
+    "close": "Close",
+    "search": "Search",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "notes": "Notes",
+    "tasks": "Tasks",
+    "focus": "Focus",
+    "calendar": "Calendar",
+    "chat": "AI Chat",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "theme": "Theme",
+    "language": "Language",
+    "api": "API Config",
+    "data": "Data Management",
+    "about": "About",
+    "username": "Username",
+    "email": "Email",
+    "registerTime": "Register Time",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme",
+    "languageSwitch": "Language Switch",
+    "languageSwitchDesc": "After changing the language setting, the interface will immediately switch to the selected language. Some content may require a page refresh to take full effect.",
+    "themeChanged": "Switched to {theme} theme",
+    "languageChanged": "Language switched to {language}"
+  },
+  "notes": {
+    "title": "Notes Management",
+    "newNote": "New Note",
+    "noteTitle": "Title",
+    "noteFile": "File Name",
+    "noteContent": "Content",
+    "enterTitle": "Please enter note title",
+    "enterFileName": "Default file name",
+    "enterContent": "Please enter Markdown content..."
+  },
+  "tasks": {
+    "title": "Task Management",
+    "newTask": "New Task",
+    "newProject": "New Project",
+    "taskTitle": "Task Title",
+    "taskDesc": "Task Description",
+    "project": "Project",
+    "priority": "Priority",
+    "dueDate": "Due Date",
+    "selectProject": "Select Project",
+    "selectPriority": "Select Priority",
+    "selectDate": "Select Due Date",
+    "enterTaskTitle": "Please enter task title",
+    "enterTaskDesc": "Please enter task description",
+    "projectName": "Project Name",
+    "projectDesc": "Project Description",
+    "enterProjectName": "Please enter project name",
+    "enterProjectDesc": "Please enter project description",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ja-JP": "日本語",
+    "fr-FR": "Français"
+  }
+}

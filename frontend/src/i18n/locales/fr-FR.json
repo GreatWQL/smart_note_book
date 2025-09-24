@@ -1,0 +1,83 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "search": "Rechercher",
+    "loading": "Chargement...",
+    "success": "Succès",
+    "error": "Erreur",
+    "warning": "Avertissement",
+    "info": "Information"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "notes": "Notes",
+    "tasks": "Tâches",
+    "focus": "Focus",
+    "calendar": "Calendrier",
+    "chat": "Chat IA",
+    "settings": "Paramètres"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "profile": "Profil",
+    "theme": "Thème",
+    "language": "Langue",
+    "api": "Configuration API",
+    "data": "Gestion des données",
+    "about": "À propos",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "registerTime": "Heure d'inscription",
+    "lightTheme": "Thème clair",
+    "darkTheme": "Thème sombre",
+    "languageSwitch": "Changement de langue",
+    "languageSwitchDesc": "Après avoir modifié le paramètre de langue, l'interface basculera immédiatement vers la langue sélectionnée. Certains contenus peuvent nécessiter une actualisation de la page pour prendre pleinement effet.",
+    "themeChanged": "Basculé vers le thème {theme}",
+    "languageChanged": "Langue changée en {language}"
+  },
+  "notes": {
+    "title": "Gestion des notes",
+    "newNote": "Nouvelle note",
+    "noteTitle": "Titre",
+    "noteFile": "Nom du fichier",
+    "noteContent": "Contenu",
+    "enterTitle": "Veuillez saisir le titre de la note",
+    "enterFileName": "Nom de fichier par défaut",
+    "enterContent": "Veuillez saisir le contenu Markdown..."
+  },
+  "tasks": {
+    "title": "Gestion des tâches",
+    "newTask": "Nouvelle tâche",
+    "newProject": "Nouveau projet",
+    "taskTitle": "Titre de la tâche",
+    "taskDesc": "Description de la tâche",
+    "project": "Projet",
+    "priority": "Priorité",
+    "dueDate": "Date d'échéance",
+    "selectProject": "Sélectionner un projet",
+    "selectPriority": "Sélectionner la priorité",
+    "selectDate": "Sélectionner la date d'échéance",
+    "enterTaskTitle": "Veuillez saisir le titre de la tâche",
+    "enterTaskDesc": "Veuillez saisir la description de la tâche",
+    "projectName": "Nom du projet",
+    "projectDesc": "Description du projet",
+    "enterProjectName": "Veuillez saisir le nom du projet",
+    "enterProjectDesc": "Veuillez saisir la description du projet",
+    "high": "Élevée",
+    "medium": "Moyenne",
+    "low": "Faible"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ja-JP": "日本語",
+    "fr-FR": "Français"
+  }
+}

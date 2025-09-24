@@ -1,0 +1,83 @@
+{
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "add": "추가",
+    "confirm": "확인",
+    "close": "닫기",
+    "search": "검색",
+    "loading": "로딩 중...",
+    "success": "성공",
+    "error": "오류",
+    "warning": "경고",
+    "info": "정보"
+  },
+  "nav": {
+    "dashboard": "대시보드",
+    "notes": "노트",
+    "tasks": "작업",
+    "focus": "집중",
+    "calendar": "캘린더",
+    "chat": "AI 채팅",
+    "settings": "설정"
+  },
+  "settings": {
+    "title": "설정",
+    "profile": "프로필",
+    "theme": "테마",
+    "language": "언어",
+    "api": "API 설정",
+    "data": "데이터 관리",
+    "about": "정보",
+    "username": "사용자명",
+    "email": "이메일",
+    "registerTime": "등록 시간",
+    "lightTheme": "라이트 테마",
+    "darkTheme": "다크 테마",
+    "languageSwitch": "언어 전환",
+    "languageSwitchDesc": "언어 설정을 변경한 후 인터페이스가 즉시 선택한 언어로 전환됩니다. 일부 내용은 페이지를 새로 고쳐야 완전히 적용될 수 있습니다.",
+    "themeChanged": "{theme} 테마로 전환되었습니다",
+    "languageChanged": "언어가 {language}로 전환되었습니다"
+  },
+  "notes": {
+    "title": "노트 관리",
+    "newNote": "새 노트",
+    "noteTitle": "제목",
+    "noteFile": "파일명",
+    "noteContent": "내용",
+    "enterTitle": "노트 제목을 입력하세요",
+    "enterFileName": "기본 파일명",
+    "enterContent": "마크다운 내용을 입력하세요..."
+  },
+  "tasks": {
+    "title": "작업 관리",
+    "newTask": "새 작업",
+    "newProject": "새 프로젝트",
+    "taskTitle": "작업 제목",
+    "taskDesc": "작업 설명",
+    "project": "프로젝트",
+    "priority": "우선순위",
+    "dueDate": "마감일",
+    "selectProject": "프로젝트 선택",
+    "selectPriority": "우선순위 선택",
+    "selectDate": "마감일 선택",
+    "enterTaskTitle": "작업 제목을 입력하세요",
+    "enterTaskDesc": "작업 설명을 입력하세요",
+    "projectName": "프로젝트명",
+    "projectDesc": "프로젝트 설명",
+    "enterProjectName": "프로젝트명을 입력하세요",
+    "enterProjectDesc": "프로젝트 설명을 입력하세요",
+    "high": "높음",
+    "medium": "보통",
+    "low": "낮음"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ja-JP": "日本語",
+    "fr-FR": "Français"
+  }
+}

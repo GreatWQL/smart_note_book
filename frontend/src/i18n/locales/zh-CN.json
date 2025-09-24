@@ -1,0 +1,83 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "confirm": "确认",
+    "close": "关闭",
+    "search": "搜索",
+    "loading": "加载中...",
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息"
+  },
+  "nav": {
+    "dashboard": "仪表盘",
+    "notes": "笔记",
+    "tasks": "任务",
+    "focus": "专注",
+    "calendar": "日历",
+    "chat": "AI对话",
+    "settings": "设置"
+  },
+  "settings": {
+    "title": "设置",
+    "profile": "个人信息",
+    "theme": "主题设置",
+    "language": "语言设置",
+    "api": "API 配置",
+    "data": "数据管理",
+    "about": "关于",
+    "username": "用户名",
+    "email": "邮箱",
+    "registerTime": "注册时间",
+    "lightTheme": "浅色主题",
+    "darkTheme": "深色主题",
+    "languageSwitch": "语言切换说明",
+    "languageSwitchDesc": "更改语言设置后，界面将立即切换到所选语言。部分内容可能需要刷新页面才能完全生效。",
+    "themeChanged": "已切换到{theme}主题",
+    "languageChanged": "语言已切换到{language}"
+  },
+  "notes": {
+    "title": "笔记管理",
+    "newNote": "新建笔记",
+    "noteTitle": "标题",
+    "noteFile": "文件名",
+    "noteContent": "内容",
+    "enterTitle": "请输入笔记标题",
+    "enterFileName": "默认文件名",
+    "enterContent": "请输入Markdown内容..."
+  },
+  "tasks": {
+    "title": "任务管理",
+    "newTask": "新建任务",
+    "newProject": "新建项目",
+    "taskTitle": "任务标题",
+    "taskDesc": "任务描述",
+    "project": "所属项目",
+    "priority": "优先级",
+    "dueDate": "截止日期",
+    "selectProject": "选择项目",
+    "selectPriority": "选择优先级",
+    "selectDate": "选择截止日期",
+    "enterTaskTitle": "请输入任务标题",
+    "enterTaskDesc": "请输入任务描述",
+    "projectName": "项目名称",
+    "projectDesc": "项目描述",
+    "enterProjectName": "请输入项目名称",
+    "enterProjectDesc": "请输入项目描述",
+    "high": "高",
+    "medium": "中",
+    "low": "低"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ja-JP": "日本語",
+    "fr-FR": "Français"
+  }
+}
